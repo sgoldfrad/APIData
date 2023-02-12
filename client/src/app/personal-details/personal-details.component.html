@@ -1,0 +1,220 @@
+<h2>My form:)</h2>
+<form class="example-form" [formGroup]="personalDetails" (ngSubmit)="onSubmit()">
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label> ID:</mat-label>
+                    <input matInput type="text" name="id" formControlName="id">
+                </mat-form-field><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p *ngIf="personalDetails.controls.id.touched&&personalDetails.controls.id.errors?.['maxlength']">
+                    ID must be a maximum of 9 digits</p>
+                <p *ngIf="personalDetails.controls.id.touched&&personalDetails.controls.id.errors?.['minlength']">
+                    ID must be at least 7 disits.</p>
+                <p *ngIf="personalDetails.controls.id.touched&&personalDetails.controls.id.errors?.['required']">this
+                    field is required
+                </p>
+            </td>
+        </tr>
+    </table>
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label> First Name:</mat-label>
+                    <input matInput type="text" name="firstName" formControlName="firstName">
+                </mat-form-field><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p
+                    *ngIf="personalDetails.controls.firstName.touched&&personalDetails.controls.firstName.errors?.['required']">
+                    this
+                    field is required</p>
+            </td>
+        </tr>
+    </table>
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label> Last Name:</mat-label>
+                    <input matInput type="text" name="lastName" formControlName="lastName">
+                </mat-form-field><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p
+                    *ngIf="personalDetails.controls.lastName.touched&&personalDetails.controls.lastName.errors?.['required']">
+                    this field
+                    is required</p>
+            </td>
+        </tr>
+    </table>
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label> birthDate:</mat-label>
+                    <input matInput type="date" name="date" formControlName="birthDate">
+                </mat-form-field><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p
+                    *ngIf="personalDetails.controls.birthDate.touched&&personalDetails.controls.birthDate.errors?.['required']">
+                    this field is required</p>
+            </td>
+        </tr>
+    </table>
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field appearance="fill" class="input" appearance="fill">
+                    <mat-label>Male/Female:</mat-label>
+                    <mat-select formControlName="sex">
+                        <mat-option [value]="0">Male</mat-option>
+                        <mat-option [value]="1">Female</mat-option>
+                    </mat-select>
+                </mat-form-field><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p *ngIf="personalDetails.controls.sex.touched&&personalDetails.controls.sex.errors?.['required']">this
+                    field is
+                    required</p>
+            </td>
+        </tr>
+    </table>
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field appearance="fill" class="input" appearance="fill">
+                    <mat-label>HMO:</mat-label>
+                    <mat-select formControlName="HMO">
+                        <mat-option [value]="0">Macabi</mat-option>
+                        <mat-option [value]="1">Clalit</mat-option>
+                        <mat-option [value]="2">Meuchedet</mat-option>
+                        <mat-option [value]="3">Leumit</mat-option>
+                    </mat-select>
+                </mat-form-field><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p *ngIf="personalDetails.controls.HMO.touched&&personalDetails.controls.HMO.errors?.['required']">this
+                    field is
+                    required</p>
+            </td>
+        </tr>
+    </table>
+    <input type="button" (click)="addChild()" value="+ Add another child" id="button" /><br>
+    <table class="example-full-width" cellspacing="0" formArrayName="children"
+        *ngFor="let c of children.controls; let i = index">
+        <div class="row" [formGroupName]="i">
+            <tr>
+                <td>
+                    <h2 class="lead">Child {{i+1}}</h2>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label> ID:</mat-label>
+                        <input matInput type="text" name="idChild" formControlName='idChild'>
+                    </mat-form-field><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p *ngIf="c.value.idChild.touched&&c.value.idChild.errors?.['maxlength']">
+                        ID must be a maximum of 9 digits</p>
+                    <p *ngIf="c.value.idChild.touched&&c.value.idChild.errors?.['minlength']">
+                        ID must be at least 7 disits.</p>
+                    <p *ngIf="c.value.idChild.touched&&c.value.idChild.errors?.['required']">this
+                        field is required
+                    </p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label> Name:</mat-label>
+                        <input matInput type="text" name="namechild" formControlName='name'>
+                    </mat-form-field><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p *ngIf="c.value.name.touched&&c.value.name.errors?.['required']">
+                        this
+                        field is required</p>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label> BirthDate:</mat-label>
+                        <input matInput type="date" name="birthChild" formControlName='birthDateChild'>
+                    </mat-form-field><br>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p *ngIf="c.value.birthDateChild.touched&&c.value.birthDateChild.errors?.['required']">
+                        this field is required</p>
+                </td>
+            </tr>
+        </div>
+    </table>
+    <button mat-raised-button type="submit" class="buttons" [disabled]="!personalDetails.valid">Submit</button>
+</form>
+<table id="excel-table" [hidden]="true">
+    <tr>
+        <th>Id</th>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Birthdate</th>
+        <th>Sex</th>
+        <th>HMO</th>
+    </tr>
+    <tr>
+        <td>{{id}}</td>
+        <td>{{firstName}}</td>
+        <td>{{lastName}}</td>
+        <td>{{birthDate}}</td>
+        <td>{{sex==1?"female":sex==0?"male":""}}</td>
+        <td>{{getEHMO()}}</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr *ngIf="children.controls">
+        <td>My children</td>
+    </tr>
+    <tr *ngIf="children.controls">
+        <td>num child</td>
+        <td>IdChild</td>
+        <td>NameChild</td>
+        <td>BirthDateChild</td>
+    </tr>
+    <tr *ngFor="let item of children.controls; let i = index">
+        <td>child {{i+1}}</td>
+        <td>{{item.value.idChild}}</td>
+        <td>{{item.value.name}}</td>
+        <td>{{item.value.birthDateChild}}</td>
+    </tr>
+</table>

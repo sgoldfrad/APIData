@@ -1,0 +1,20 @@
+<h1>hello {{userName}}</h1>
+<p>These are the instructions for completing the form</p>
+
+<ngb-accordion #acc="ngbAccordion" activeIds="config-panel-one" >
+    <ngb-panel title="One" id="config-panel-one" >
+        <ng-template ngbPanelContent >
+            First fill in your personal details.
+            Next to each field appears which data from your details you need to enter
+            Pay attention ! A button is given that allows you to enter your children's information
+            Both in the children's fields and in the personal fields - the fields are a must!
+        </ng-template>
+    </ngb-panel>
+    <ngb-panel title="Two" >
+        <ng-template ngbPanelContent >
+            Second, please make sure that the details are correct and accurate.
+            Click on the confirmation button at the bottom of the page
+            and your details will be saved successfully
+        </ng-template>
+    </ngb-panel>
+</ngb-accordion>

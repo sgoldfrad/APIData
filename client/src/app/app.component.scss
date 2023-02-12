@@ -1,0 +1,32 @@
+ul {
+  right: 0px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: rgb(16, 160, 232);
+  direction: ltr;
+  display: flex;
+}
+
+li {
+  float: left;
+  cursor: pointer;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: rgb(29, 102, 198);
+}
+nav {
+  text-align: left;
+  position: sticky;
+  top: 0;
+}
